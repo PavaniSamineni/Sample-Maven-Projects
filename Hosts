@@ -1,0 +1,2 @@
+[server]
+18.218.241.190 ansible_private_key_file=/home/ubuntu/pemfiles/vineeth.pem ansible_ssh_user=ubuntu

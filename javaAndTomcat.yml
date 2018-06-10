@@ -1,0 +1,28 @@
+---
+- hosts: all
+  gather_facts: false
+  become: yes
+  tasks:
+    - name: Make sure that we can connect to the machine
+      ping:
+
+    - name: installing Java
+      apt: name=openjdk-8-jdk state=present
+    
+    - name: Check if java is installed
+      command: java -version
+      register: java_result
+
+    - debug:
+          msg: "Success - Java is installed"
+        when:  java_result is success
+
+    - debug:
+          msg: "Failed - Java is not installed"
+        when: java_result is failed
+  
+    - name: copy Tomcat
+      copy: src=./apache-tomcat-8.5.16.tar.gz dest=/opt/apache-tomcat-8.5.16.tar.gz
+
+    - name: Extract Tomcat archive
+      command: tar zxvf /opt/apache-tomcat-8.5.16.tar.gz -C /opt/ creates=/opt/apache-tomcat-8.5.16

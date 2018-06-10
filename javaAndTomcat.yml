@@ -14,11 +14,11 @@
       register: java_result
 
     - debug:
-          msg: "Success - Java is installed"
+        msg: "Success - Java is installed"
         when:  java_result is success
 
     - debug:
-          msg: "Failed - Java is not installed"
+        msg: "Failed - Java is not installed"
         when: java_result is failed
   
     - name: copy Tomcat

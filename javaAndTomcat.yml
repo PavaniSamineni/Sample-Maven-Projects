@@ -15,11 +15,11 @@
 
     - debug:
         msg: "Success - Java is installed"
-        when:  java_result is success
+      when:  java_result is success
 
     - debug:
         msg: "Failed - Java is not installed"
-        when: java_result is failed
+      when: java_result is failed
   
     - name: copy Tomcat
       copy: src=./apache-tomcat-8.5.16.tar.gz dest=/opt/apache-tomcat-8.5.16.tar.gz
